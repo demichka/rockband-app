@@ -1,0 +1,76 @@
+<div class="createBand">
+    <div class="row">
+        <div class="col-6 ">
+            <div class="card p-3">
+                <h3>Add band to the band's list</h3>
+                <div class="input-group mb-3">
+                    <input type="text" class="band-data form-control" placeholder="Band name" aria-label="Band name">
+                    <div class="input-group-append">
+                        <button class="add-btn btn btn-outline-secondary" type="button" data-add="addBand">Add band</button>
+                    </div>
+                </div>
+                ${this.bandsStorage}
+            </div>
+
+        </div>
+        <div class="col-6 ">
+            <div class="card p-3">
+                <h3>Add musician to the musician's list</h3>
+                <div class="input-group mb-3">
+                    <input type="text" class="musician-data form-control" placeholder="Name" aria-label="Enter musician">
+                    <div class="input-group-append">
+                        <button class="add-btn btn btn-outline-secondary" type="button" data-add="addMusician">Add
+                            musician</button>
+                    </div>
+                </div>
+                ${this.musiciansStorage}
+            </div>
+
+        </div>
+        <div class="col-6">
+            <div class="card my-5 p-3">
+                <h3>Create Band!</h3>
+                <p>1. Choose band's name:</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="bandsSelect">Band</label>
+                    </div>
+                    <select class="custom-select" id="bandsSelect">
+                        ${this.bandsList()}
+                    </select>
+                    <div class="input-group-append">
+                        <button class="add-btn btn btn-outline-secondary" data-add="chooseBand" type="button">Choose</button>
+                    </div>
+                </div>
+                <p>2. Add musucians to the band, select them from musician's list:</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="musiciansSelect">Musician</label>
+                    </div>
+                    <select class="custom-select" id="musiciansSelect">
+                        ${this.musiciansList()}
+                    </select>
+                    <div class="input-group-append">
+                        <button class="add-btn btn btn-outline-secondary" data-add="chooseMusician" type="button">Choose</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card my-5 p-3 createBandCard">
+                <h3>We are creating band:</h3>
+                <h4>${this.createdBand ? this.createdBand.name : ''}</h4>
+                <h5 class="bandMembersList">Members of this band:</h5>
+                ${this.createdBand ? this.showCreatedBandList(): ''}
+                ${ this.createdBand && this.createdBand.members.length > 0 ? `
+                    <button class="btn btn-secondary saveBtn" data-btn="saveCreatedBand">Save</button>
+                    ` : ''} 
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card my-5 p-3">
+                ${this.createdBandsStorage.length > 0 ? this.createdBandsStorage : ''}
+            </div>
+        </div>
+    </div>
+</div>
